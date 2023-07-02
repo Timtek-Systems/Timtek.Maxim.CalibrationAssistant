@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Timtek.Maxim.ConfigureCalib
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{BA0E111B-3650-4780-A982-F58CF349AD68}"
 	ProjectSection(SolutionItems) = preProject
-		DesignGoals.md = DesignGoals.md
+		ReadMe.md = ReadMe.md
 	EndProjectSection
 EndProject
 Global
