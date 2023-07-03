@@ -1,0 +1,12 @@
+[
+  {
+    "channelName": "Basic Darks", 
+    "frameType": "Dark", 
+    "Exposure": 60, 
+    "Temperature": 0, 
+    "Binning": 1, 
+    "maxAge": 10, 
+    "minFrames": 1, 
+    "desiredFrames": 3 
+  }
+]

@@ -8,7 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="TestData\ChannelSpecifications\BasicDarkFrames.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="TestData\ChannelSpecifications\BasicDarkFrames.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Machine.Specifications.Should" Version="1.0.0" />
+    <PackageReference Include="NLog" Version="5.2.1" />
+    <PackageReference Include="TA.ObjectOrientedAstronomy.FlexibleImageTransportSystem" Version="1.0.0" />
+    <PackageReference Include="TA.ObjectOrientedAstronomy.Observatory" Version="1.1.0" />
   </ItemGroup>
 
 </Project>
