@@ -13,7 +13,7 @@ namespace Timtek.Maxim.ConfigureCalibration.Specifications.TestHelpers
     {
     class FitsStreamBuilder
         {
-        public Stream FitsStream;
+        public Stream? FitsStream;
 
         public FitsStreamBuilder FromEmbeddedResource(string name)
             {

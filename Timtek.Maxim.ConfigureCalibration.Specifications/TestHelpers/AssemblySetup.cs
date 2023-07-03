@@ -13,22 +13,14 @@ namespace Timtek.Maxim.ConfigureCalibration.Specifications.TestHelpers
     {
     public class AssemblySetup : IAssemblyContext
         {
-        static Logger log = null!;
+        private static Logger? log = null;
 
-        public static Logger Log
-            {
-            get
-                {
-                if (log == null)
-                    ConfigureLogging();
-                return log;
-                }
-            }
+        public static Logger Log => log ?? ConfigureLogging();
 
         public void OnAssemblyStart()
             {
             ConfigureLogging();
-            log.Info("Logging configured");
+            Log.Info("Logging configured");
             }
 
         public void OnAssemblyComplete()
@@ -36,7 +28,7 @@ namespace Timtek.Maxim.ConfigureCalibration.Specifications.TestHelpers
             log = null!;
             }
 
-        static void ConfigureLogging()
+        static Logger ConfigureLogging()
             {
             var config = new LoggingConfiguration();
             var traceTarget = new TraceTarget();
@@ -44,7 +36,7 @@ namespace Timtek.Maxim.ConfigureCalibration.Specifications.TestHelpers
             var traceRule = new LoggingRule("*", LogLevel.Debug, traceTarget);
             config.LoggingRules.Add(traceRule);
             LogManager.Configuration = config;
-            log = LogManager.GetCurrentClassLogger();
+            return LogManager.GetCurrentClassLogger();
             }
         }
     }
