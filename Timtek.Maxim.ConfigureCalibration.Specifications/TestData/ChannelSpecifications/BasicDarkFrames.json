@@ -1,7 +1,7 @@
 [
   {
     "channelName": "Basic Darks", 
-    "frameType": "Dark", 
+    "FrameType": "Dark", 
     "Exposure": 60, 
     "Temperature": 0, 
     "Binning": 1, 

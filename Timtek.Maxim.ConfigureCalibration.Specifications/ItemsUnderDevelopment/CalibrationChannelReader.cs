@@ -1,9 +1,29 @@
-﻿namespace Timtek.Maxim.ConfigureCalibration.Specifications.ItemsUnderDevelopment;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Threading.Channels;
 
-public class CalibrationChannelReader
-{
-    public IEnumerable<CalibrationChannel> ReadSpecification(Stream inputStream)
+namespace Timtek.Maxim.ConfigureCalibration;
+
+internal class CalibrationChannelReader
+    {
+    static readonly JsonSerializerOptions readOptions = new JsonSerializerOptions()
         {
-        return new List<CalibrationChannel>();
+        AllowTrailingCommas = true,
+        NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals | JsonNumberHandling.AllowReadingFromString,
+        PropertyNameCaseInsensitive = true,
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        Converters =
+            {
+            new JsonStringEnumConverter()
+            }
+        };
+    internal async Task<IEnumerable<CalibrationChannelSpecification>> ReadSpecificationAsync(Stream inputStream)
+        {
+        using (var reader = new StreamReader(inputStream))
+            {
+            var json = await reader.ReadToEndAsync();
+            var channels = JsonSerializer.Deserialize<IEnumerable<CalibrationChannelSpecification>>(json, readOptions);
+            return channels ?? Enumerable.Empty<CalibrationChannelSpecification>();
+            }
         }
-}
+    }

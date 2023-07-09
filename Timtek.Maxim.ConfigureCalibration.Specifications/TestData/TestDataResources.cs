@@ -14,7 +14,8 @@ namespace Timtek.Maxim.ConfigureCalibration.Specifications.TestData
         public static Stream ChannelSpecification(string key)
             {
             var assembly = Assembly.GetExecutingAssembly();
-            var fullyQualifiedName = $"{assembly.GetName().Name}.TestData.ChannelSpecifications.{key}";
+            var rootName = "TestData.ChannelSpecifications";
+            var fullyQualifiedName = $"{assembly.GetName().Name}.{rootName}.{key}.json";
             var stream = assembly.GetManifestResourceStream(fullyQualifiedName);
             return stream ?? Stream.Null;
             }
